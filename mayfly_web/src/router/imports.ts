@@ -10,4 +10,6 @@ export const imports = {
     "AccountList": () => import('@/views/system/account'),
     "LogList": () => import('@/views/system/log'),
     "SelectData": () => import('@/views/ops/db'),
+    'Check': () => import('@/views/check/index.vue'),
+    // 'upload': () => import('@/views/check/upload.vue'),
 }

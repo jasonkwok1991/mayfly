@@ -1,6 +1,6 @@
-import { RouteRecordRaw } from 'vue-router';
-import Layout from '@/views/layout/index.vue'
+import Layout from '@/views/layout/index.vue';
 import RouterParent from '@/views/layout/routerView/parent.vue';
+import { RouteRecordRaw } from 'vue-router';
 
 // 定义动态路由
 export const dynamicRoutes = [
@@ -114,6 +114,15 @@ export const dynamicRoutes = [
                 },
             },
             {
+                path: '/check',
+                name: 'check',
+                component: () => import('@/views/check/index.vue'),
+                meta: {
+                    title: '考核中心',
+                    isKeepAlive: true,
+                },
+            },
+            {
                 path: '/iframes',
                 name: 'layoutIfameView',
                 component: RouterParent,
@@ -124,6 +133,7 @@ export const dynamicRoutes = [
                     icon: 'el-icon-menu',
                 },
             },
+
         ],
     },
 ];
@@ -164,6 +174,14 @@ export const staticRoutes: Array<RouteRecordRaw> = [
             // 是否根据query对标题名进行参数替换，即最终显示为‘终端_机器名’
             titleRename: true,
             icon: 'iconfont icon-caidan',
+        },
+    },
+    {
+        path: '/upload',
+        name: 'upload',
+        component: () => import('@/views/check/component/upload.vue'),
+        meta: {
+            title: '今日上传',
         },
     },
 ];
