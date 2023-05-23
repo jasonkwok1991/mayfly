@@ -12,14 +12,7 @@ import java.util.List;
  * @copyright All Rights Reserved.
  */
 public interface ImageService {
-    
-    /**
-     * 根据对象属性插入
-     *
-     * @param image 实例对象
-     * @return {@link Integer}
-     */
-    Long insertByProperty(Image image);
+
 
     /**
      * 根据对象属性列表批量插入

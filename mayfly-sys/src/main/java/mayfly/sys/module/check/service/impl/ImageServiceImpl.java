@@ -20,11 +20,7 @@ import java.util.List;
 public class ImageServiceImpl implements ImageService {
     @Autowired
     private ImageMapper imageMapper;
-    
-    @Override
-    public Integer insertByProperty(Image image) {
-        return this.imageMapper.insertByProperty(image);
-    }
+
 
     @Override
     public Integer insertBatchByProperty(List<Image> list) {
