@@ -512,3 +512,14 @@ CREATE TABLE `t_sys_operation_log` (
 -- Records of t_sys_operation_log
 -- ----------------------------
 SET FOREIGN_KEY_CHECKS = 1;
+
+DROP TABLE IF EXISTS `t_image`;
+CREATE TABLE `t_image` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `image_type` tinyint(2) DEFAULT NULL COMMENT '1：海安发布；2：海安播报: 3:海安融媒;4:我的海安;5:悦海安;6:海安日报',
+  `url` varchar(256) NOT NULL,
+  `creator_id` bigint(20) unsigned DEFAULT NULL,
+  `creator` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
