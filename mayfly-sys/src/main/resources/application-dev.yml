@@ -22,9 +22,9 @@ spring:
   # 数据源
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/mayfly?characterEncoding=UTF8&useUnicode=true&autoReconnect=true&useSSL=false&serverTimezone=Hongkong
-    username: root
-    password: 123456
+    url: jdbc:mysql://124.223.20.168:3306/mayfly?characterEncoding=UTF8&useUnicode=true&autoReconnect=true&useSSL=false&serverTimezone=Hongkong
+    username: admin1122
+    password: onepiece1991!
     # 下面为连接池的补充设置，应用到上面所有数据源中
     # 初始化大小，最小，最大
     initialSize: 5
