@@ -1,7 +1,6 @@
 <template>
   <el-space wrap
-            fill
-            direction="vertical">
+            direction="horizontal">
 
     <el-card>
       <el-progress type="circle"
@@ -10,18 +9,33 @@
     <el-card>
       <el-progress type="circle"
                    :percentage="50" />
-      抖音海安 </el-card>
+      海安播报 </el-card>
+    <el-card>
+      <el-progress type="circle"
+                   :percentage="50" />
+      海安融媒 </el-card>
+    <el-card>
+      <el-progress type="circle"
+                   :percentage="50" />
+      我的海安 </el-card>
+    <el-card>
+      <el-progress type="circle"
+                   :percentage="50" />
+      悦海安 </el-card>
+    <el-card>
+      <el-progress type="circle"
+                   :percentage="50" />
+      海安日报 </el-card>
 
     <el-button type="primary"
                @click="enterView">立即上传</el-button>
-
   </el-space>
 
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
-    name: 'upload',
+    name: 'check',
     methods: {
         enterView() {
             console.log('今日上传');

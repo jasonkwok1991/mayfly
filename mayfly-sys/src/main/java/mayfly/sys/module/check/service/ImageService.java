@@ -86,4 +86,10 @@ public interface ImageService {
      */
     Long countByProperty(Image image);
 
+    /**
+     * 保存文件
+     * @param url
+     */
+    void saveImage(String url);
+
 }

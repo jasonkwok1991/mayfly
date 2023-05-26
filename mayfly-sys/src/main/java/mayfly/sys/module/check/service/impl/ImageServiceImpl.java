@@ -66,4 +66,12 @@ public class ImageServiceImpl implements ImageService {
     public Long countByProperty(Image image) {
         return this.imageMapper.countByProperty(image);
     }
+
+    @Override
+    public void saveImage(String url) {
+        Image image = new Image();
+        image.setUrl(url);
+        //获取session，保存用户数据
+        this.imageMapper.insertByProperty(image);
+    }
 }
