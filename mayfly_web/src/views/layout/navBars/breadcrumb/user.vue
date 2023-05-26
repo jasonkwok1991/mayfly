@@ -15,7 +15,7 @@
                 </el-dropdown-menu>
             </template>
         </el-dropdown> -->
-        <div class="layout-navbars-breadcrumb-user-icon" @click="onSearchClick">
+        <!-- <div class="layout-navbars-breadcrumb-user-icon" @click="onSearchClick">
             <el-icon title="菜单搜索">
                 <search />
             </el-icon>
@@ -24,8 +24,8 @@
             <el-icon title="布局设置">
                 <setting />
             </el-icon>
-        </div>
-        <div class="layout-navbars-breadcrumb-user-icon">
+        </div> -->
+        <!-- <div class="layout-navbars-breadcrumb-user-icon">
             <el-popover
                 placement="bottom"
                 trigger="click"
@@ -52,7 +52,7 @@
             <el-icon v-else title="开全屏">
                 <crop />
             </el-icon>
-        </div>
+        </div> -->
         <el-dropdown :show-timeout="70" :hide-timeout="50" @command="onHandleCommandClick">
             <span class="layout-navbars-breadcrumb-user-link" style="cursor: pointer">
                 <img :src="getUserInfos.photo" class="layout-navbars-breadcrumb-user-link-photo mr5" />
