@@ -65,8 +65,7 @@
     </el-row>
   </div>
 
-  {{value}}
-  {{value1}}
+
 </template>
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
