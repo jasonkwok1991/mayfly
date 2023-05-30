@@ -1,11 +1,18 @@
 package mayfly.sys.module.check.service.impl;
 
-import mayfly.sys.module.check.mapper.ImageMapper;
+import mayfly.core.permission.LoginAccount;
 import mayfly.sys.module.check.entity.Image;
+import mayfly.sys.module.check.form.ImageForm;
+import mayfly.sys.module.check.mapper.ImageMapper;
 import mayfly.sys.module.check.service.ImageService;
+import mayfly.sys.module.check.vo.ImageVO;
+import mayfly.sys.module.sys.entity.AccountDO;
+import mayfly.sys.module.sys.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,6 +27,9 @@ import java.util.List;
 public class ImageServiceImpl implements ImageService {
     @Autowired
     private ImageMapper imageMapper;
+
+    @Autowired
+    private AccountService accountService;
 
 
     @Override
@@ -68,10 +78,27 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void saveImage(String url) {
+    public void saveImage(ImageForm form) {
+        //从上下文获取用户登录ID
+        Long uid = LoginAccount.getLoginAccountId();
+        AccountDO aDo = accountService.getById(uid);
+
+        ArrayList<Image> list = new ArrayList<>();
         Image image = new Image();
-        image.setUrl(url);
-        //获取session，保存用户数据
-        this.imageMapper.insertByProperty(image);
+        image.setCreator(aDo.getUsername());
+        image.setImageType(form.getImageType());
+        image.setCreatorId(uid);
+        image.setUrl(form.getUrl());
+        image.setCreateTime(new Date());
+        list.add(image);
+        this.insertBatchByProperty(list);
+    }
+
+    @Override
+    public List<ImageVO> selectByAccountId() {
+//        Long uid = LoginAccount.getLoginAccountId();
+        List<ImageVO> list = imageMapper.selectByAccountId(13L);
+
+        return list;
     }
 }

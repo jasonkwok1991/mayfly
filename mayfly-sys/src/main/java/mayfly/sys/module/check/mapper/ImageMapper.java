@@ -1,7 +1,9 @@
 package mayfly.sys.module.check.mapper;
+
 import mayfly.sys.module.check.entity.Image;
+import mayfly.sys.module.check.vo.ImageVO;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 数据接口
@@ -11,7 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2023/05/23 10:52:30
  * @copyright All Rights Reserved.
  */
-@Mapper
+
 public interface ImageMapper {
     
     /**
@@ -93,4 +95,11 @@ public interface ImageMapper {
      * @return {@link Long}
      */
     Long countByProperty(Image image);
+
+    /**
+     * 根据用户ID查询
+     * @param accountId
+     * @return
+     */
+    List<ImageVO> selectByAccountId(Long accountId);
 }

@@ -1,6 +1,9 @@
 package mayfly.sys.module.check.service;
 
 import mayfly.sys.module.check.entity.Image;
+import mayfly.sys.module.check.form.ImageForm;
+import mayfly.sys.module.check.vo.ImageVO;
+
 import java.util.List;
 
 /**
@@ -88,8 +91,10 @@ public interface ImageService {
 
     /**
      * 保存文件
-     * @param url
+     * @param form
      */
-    void saveImage(String url);
+    void saveImage(ImageForm form);
+
+    List<ImageVO> selectByAccountId();
 
 }

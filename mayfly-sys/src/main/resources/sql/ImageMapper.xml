@@ -209,4 +209,16 @@
         <include refid="all_query_condition_with_where"/>
     </select>
 
+    <!-- 根据用户id查询-->
+    <select id="selectByAccountId" parameterType="java.lang.Long" resultType="mayfly.sys.module.check.vo.ImageVO">
+        SELECT
+        COUNT(id) as count,image_type as imageType
+        FROM
+        <include refid="table_name"/>
+        WHERE
+        creator_id = #{creatorId}
+        and
+        TO_DAYS(create_time) = TO_DAYS(NOW())
+        GROUP BY image_type
+    </select>
 </mapper>
