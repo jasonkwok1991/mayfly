@@ -1,6 +1,7 @@
 <template>
     <div class="home-container">
-        <el-row :gutter="15">
+    <div class="hello">Hello!Welcome~</div>
+        <!-- <el-row :gutter="15">
             <el-col :sm="6" class="mb15">
                 <div class="home-card-item home-card-first">
                     <div class="flex-margin flex">
@@ -89,7 +90,7 @@
                     <div style="height: 200px" ref="homeOvertimeRef"></div>
                 </el-card>
             </el-col>
-        </el-row>
+        </el-row> -->
     </div>
 </template>
 
@@ -263,6 +264,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.hello{
+
+    text-align:center;
+    font-size:36px;
+    
+    
+}
 .home-container {
     overflow-x: hidden;
     .home-card-item {
