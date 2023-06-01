@@ -1,7 +1,7 @@
 package mayfly.sys.module.check.controller;
 
 
-import mayfly.core.model.result.Response2Result;
+import mayfly.core.model.result.Result;
 import mayfly.sys.module.check.form.ImageForm;
 import mayfly.sys.module.check.service.ImageService;
 import mayfly.sys.module.check.vo.ImageVO;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 
-@Response2Result
+
 @RestController
 @RequestMapping("/image")
 public class ImageController {
@@ -33,8 +33,9 @@ public class ImageController {
         imageService.saveImage(form);
     }
     @GetMapping("/searchImage")
-    public List<ImageVO> search(){
-        return imageService.selectByAccountId();
+    public Result<?>  search(){
+        List<ImageVO> imageVOS = imageService.selectByAccountId();
+        return Result.success(imageVOS);
     }
 
 }
