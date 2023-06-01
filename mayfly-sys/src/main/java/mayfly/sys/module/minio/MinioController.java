@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,6 +37,12 @@ public class MinioController {
             res.put("msg", "上传失败");
         }
         return res.toJSONString();
+    }
+
+    @GetMapping("/getAbsoluteFileAddress")
+    @ResponseBody
+    public String getAbsoluteFileAddress(){
+       return minioUtils.getPreviewFileUrl("product_1683873980985.jpg");
     }
 
 }

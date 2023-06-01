@@ -23,11 +23,13 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private PermissionService permissionService;
 
+
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new MockInterceptor()).addPathPatterns("/**");
+//        registry.addInterceptor(new MockInterceptor()).addPathPatterns("http://localhost:8081/");
         registry.addInterceptor(new PermissionInterceptor(permissionService))
-                .addPathPatterns("/sys/**", "/devops/**");
+                .addPathPatterns("/sys/**", "/devops/**","/image/**");
     }
 
     @Override

@@ -2,14 +2,12 @@ package mayfly.core.permission;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import mayfly.core.exception.BizException;
 import mayfly.core.model.result.CommonCodeEnum;
 import mayfly.core.model.result.Result;
 import mayfly.core.permission.registry.PermissionCheckHandler;
 import mayfly.core.permission.registry.SimpleLoginAccountRegistry;
 import mayfly.core.web.WebUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.Optional;
@@ -46,27 +44,32 @@ public class PermissionInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+
         if (request.getMethod().equals(RequestMethod.OPTIONS.name())) {
             return true;
         }
         String token = Optional.ofNullable(request.getHeader(tokenParamName))
                 .orElseGet(() -> request.getParameter(tokenParamName));
-        try {
-            // 判断该用户是否有执行该方法的权限，如果校验通过，返回true
-            if (!(handler instanceof HandlerMethod) || checkHandler.hasPermission(token, ((HandlerMethod) handler).getMethod())) {
-                if (!"admin".equals(LoginAccount.getFromContext().getUsername()) && !"GET".equals(request.getMethod())) {
-                    sendErrorMessage(response, CommonCodeEnum.PARAM_ERROR.toResult("非admin用户只可观望"));
-                    return false;
-                }
-                return true;
-            }
-            // token 过期
-            return noPermission(response);
-        } catch (BizException e) {
-            //权限禁用or没有权限
-            sendErrorMessage(response, Result.of(e.getErrorCode(), e.getMessage()));
-            return false;
+        if (token != null) {
+            checkHandler.setAccount(token);
         }
+        return true;
+//        try {
+//            // 判断该用户是否有执行该方法的权限，如果校验通过，返回true
+//            if (!(handler instanceof HandlerMethod) || checkHandler.hasPermission(token, ((HandlerMethod) handler).getMethod())) {
+//                if (!"admin".equals(LoginAccount.getFromContext().getUsername()) && !"GET".equals(request.getMethod())) {
+//                    sendErrorMessage(response, CommonCodeEnum.PARAM_ERROR.toResult("非admin用户只可观望"));
+//                    return false;
+//                }
+//                return true;
+//            }
+//            // token 过期
+//            return noPermission(response);
+//        } catch (BizException e) {
+//            //权限禁用or没有权限
+//            sendErrorMessage(response, Result.of(e.getErrorCode(), e.getMessage()));
+//            return false;
+//        }
     }
 
     @Override

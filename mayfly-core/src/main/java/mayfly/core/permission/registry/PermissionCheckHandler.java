@@ -95,4 +95,13 @@ public class PermissionCheckHandler {
         // 判断code注册器是否含有该用户的权限code
         return loginAccount.hasPermission(permissionInfo);
     }
+
+    public boolean setAccount(String token){
+        LoginAccount loginAccount;
+        if (StringUtils.isEmpty(token) || (loginAccount = loginAccountRegistry.getLoginAccount(token)) == null) {
+            return false;
+        }
+        LoginAccount.setToContext(loginAccount);
+        return true;
+    }
 }

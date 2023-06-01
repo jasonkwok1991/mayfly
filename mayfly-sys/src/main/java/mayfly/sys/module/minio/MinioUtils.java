@@ -2,7 +2,6 @@ package mayfly.sys.module.minio;
 
 import com.alibaba.fastjson.JSONObject;
 import io.minio.MinioClient;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -68,5 +67,15 @@ public class MinioUtils {
         res.put("msg", "上传失败");
         return res;
     }
+
+    public String getPreviewFileUrl(String fileName) {
+        try {
+            return client.presignedGetObject("product",fileName);
+        }catch (Exception e){
+            e.printStackTrace();
+            return "";
+        }
+    }
+
 
 }
