@@ -1,6 +1,16 @@
 <template>
     <div class="home-container">
-    <div class="hello">Hello!Welcome~</div>
+    <div class="hello">
+     <el-row>
+      <el-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18">
+        <el-image :src="imghome" 
+                  style="width: 100%"
+                  
+                  alt="Hello!Welcome~">
+        </el-image>
+      </el-col>
+     </el-row>
+    </div>
         <!-- <el-row :gutter="15">
             <el-col :sm="6" class="mb15">
                 <div class="home-card-item home-card-first">
@@ -101,6 +111,7 @@ import * as echarts from 'echarts';
 import { CountUp } from 'countup.js';
 import { formatAxis } from '@/common/utils/formatTime.ts';
 import { topCardItemList, environmentList, activitiesList } from './mock.ts';
+import imghome from '@/assets/image/home.jpg';
 export default {
     name: 'Home',
     setup() {
@@ -258,6 +269,8 @@ export default {
             getUserInfos,
             currentTime,
             ...toRefs(state),
+            imghome,
+            fits: ['fill', 'contain', 'cover', 'none', 'scale-down']
         };
     },
 };
@@ -268,10 +281,10 @@ export default {
 
     text-align:center;
     font-size:36px;
-    
-    
+
 }
 .home-container {
+    
     overflow-x: hidden;
     .home-card-item {
         width: 100%;
