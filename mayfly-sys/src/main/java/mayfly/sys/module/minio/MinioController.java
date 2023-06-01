@@ -2,7 +2,6 @@ package mayfly.sys.module.minio;
 
 
 import com.alibaba.fastjson.JSONObject;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +28,7 @@ public class MinioController {
      */
     @PostMapping("/upload")
     @ResponseBody
-    public String upload(@RequestParam(name = "file", required = false) MultipartFile file, HttpServletRequest request) {
+    public String upload(@RequestParam("file") MultipartFile file) {
         JSONObject res = null;
         HashMap<String, String> map = new HashMap<>();
         try {

@@ -173,7 +173,7 @@ export const staticRoutes: Array<RouteRecordRaw> = [
             title: '终端 | {name}',
             // 是否根据query对标题名进行参数替换，即最终显示为‘终端_机器名’
             titleRename: true,
-            icon: 'iconfont icon-caidan',
+            icon: 'iconfont icon-caidan', 
         },
     },
     {
