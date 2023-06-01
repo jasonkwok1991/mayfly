@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
+
 @Controller
 public class MinioController {
 
@@ -29,8 +31,12 @@ public class MinioController {
     @ResponseBody
     public String upload(@RequestParam(name = "file", required = false) MultipartFile file, HttpServletRequest request) {
         JSONObject res = null;
+        HashMap<String, String> map = new HashMap<>();
         try {
-            res = minioUtils.uploadFile(file, "product");
+            res = minioUtils.uploadFile(file, "product",map);
+            String name = map.get("name");
+            String previewFileUrl = minioUtils.getPreviewFileUrl(name);
+            res.put("msg",previewFileUrl);
         } catch (Exception e) {
             e.printStackTrace();
             res.put("code", 0);
