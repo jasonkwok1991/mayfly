@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
+
 @Slf4j
 @Component
 public class MinioUtils {
@@ -41,7 +43,7 @@ public class MinioUtils {
      * @param bucketName 存储桶
      * @return
      */
-    public JSONObject uploadFile(MultipartFile file, String bucketName) throws Exception {
+    public JSONObject uploadFile(MultipartFile file, String bucketName, HashMap<String, String> map) throws Exception {
         JSONObject res = new JSONObject();
         res.put("code", 0);
         // 判断上传文件是否为空
@@ -56,6 +58,7 @@ public class MinioUtils {
             String originalFilename = file.getOriginalFilename();
             // 新的文件名 = 存储桶名称_时间戳.后缀名
             String fileName = bucketName + "_" + System.currentTimeMillis() + originalFilename.substring(originalFilename.lastIndexOf("."));
+            map.put("name",fileName);
             // 开始上传
             client.putObject(bucketName, fileName, file.getInputStream(), file.getContentType());
             res.put("code", 1);
