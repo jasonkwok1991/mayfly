@@ -2,34 +2,45 @@
   <el-space wrap
             direction="horizontal">
 
-    <el-card>
+    <el-card class="fb">
       <el-progress type="circle"
                    v-model="fb"
+                   :format="format"
                    :percentage="fb" />
       海安发布 </el-card>
     <el-card>
       <el-progress type="circle"
                    v-model="bb"
+                   color="orange"
+                   :format="format"
                    :percentage="bb" />
       海安播报 </el-card>
     <el-card>
       <el-progress type="circle"
                    v-model="rm"
+                   color="green"
+                   :format="format"
                    :percentage="rm" />
       海安融媒 </el-card>
     <el-card>
       <el-progress type="circle"
                    v-model="wd"
+                   color="red"
+                   :format="format"
                    :percentage="wd" />
       我的海安 </el-card>
     <el-card>
       <el-progress type="circle"
                    v-model="yhh"
+                   color="pink"
+                   :format="format"
                    :percentage="yhh" />
       悦海安 </el-card>
     <el-card>
       <el-progress type="circle"
                    v-model="rb"
+                   color="yellow"
+                   :format="format"
                    :percentage="rb" />
       海安日报 </el-card>
     <el-button type="primary"
@@ -37,7 +48,7 @@
     <el-button type="primary"
                @click="enterView">立即上传</el-button>
   </el-space>
-
+  
 </template>
 <script lang="ts">
 import checkApi from '@/common/checkApi.ts';
@@ -101,10 +112,15 @@ export default {
             // console.log(state.fb);
         };
 
+        let format = (percentage:number) =>{
+          return percentage === 100 ? '已完成' : `${percentage}%`;
+        }
+        
         return {
             ...toRefs(state),
             enterView,
             searchInfo,
+            format
         };
     },
 };
@@ -113,4 +129,5 @@ export default {
 .box-card {
     width: 680px;
 }
+
 </style>
