@@ -85,16 +85,17 @@
       </el-col>
     </el-row>
 
-    <el-row justify="center"
-            class="fot">
+    <br><br><br><br>
+
+    <el-row justify="center">
       <el-button type="primary"
+                 class="fot"
                  @click="save">上传</el-button>
     </el-row>
   </div>
 </template>
 <script lang="ts">
 import checkApi from '@/common/checkApi.ts';
-import uploadfile from '@/components/uploadfile.vue';
 import { ElMessage } from 'element-plus';
 import { reactive, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
@@ -102,7 +103,6 @@ import enums from '../enums';
 
 export default {
     name: 'Upload',
-    components: { uploadfile },
     setup() {
         const router = useRouter();
         //上传文件地址，待用
@@ -198,9 +198,9 @@ export default {
     color: rgb(47, 197, 238);
 }
 .fot {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    line-height: var(--footer-height);
+    /* position: fixed;
+    bottom: 0; */
+    width: 15%;
+    /* line-height: var(--footer-height); */
 }
 </style>
