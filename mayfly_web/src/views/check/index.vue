@@ -1,54 +1,82 @@
 <template>
-  <el-space wrap
-            direction="horizontal">
-
-    <el-card shadow="hover">
+  <!-- <el-space wrap
+            direction="horizontal"> -->
+ <div>
+  <el-row justify="center">
+    <el-text tag="b">今日上传任务进度</el-text>
+  </el-row>
+  <br>
+  <el-row :gutter="6" justify="center">
+    <el-col :xs="12" :sm="8" :md="6" :lg="5" :xl="5" >
+    <el-card shadow="hover" class="cardone">
       <el-progress type="circle"
                    v-model="fb"
+                   color="white"
                    :format="format"
                    :percentage="fb" />
       海安发布 </el-card>
-    <el-card shadow="hover">
+    </el-col>
+    <el-col :xs="12" :sm="8" :md="6" :lg="5" :xl="5">
+    <el-card shadow="hover" class="cardtwo">
       <el-progress type="circle"
                    v-model="bb"
-                   color="orange"
+                   color="white"
                    :format="format"
                    :percentage="bb" />
       海安播报 </el-card>
-    <el-card shadow="hover">
+    </el-col>
+  </el-row>
+  <br>
+  <el-row :gutter="6" justify="center">
+    <el-col :xs="12" :sm="8" :md="6" :lg="5" :xl="5">
+    <el-card shadow="hover" class="cardthree">
       <el-progress type="circle"
                    v-model="rm"
-                   color="green"
+                   color="white"
                    :format="format"
                    :percentage="rm" />
       海安融媒 </el-card>
-    <el-card shadow="hover">
+    </el-col>
+    <el-col :xs="12" :sm="8" :md="6" :lg="5" :xl="5">
+    <el-card shadow="hover" class="cardfour">
       <el-progress type="circle"
                    v-model="wd"
-                   color="red"
+                   color="white"
                    :format="format"
                    :percentage="wd" />
       我的海安 </el-card>
-    <el-card shadow="hover"> 
+    </el-col>
+  </el-row>
+  <br>
+  <el-row :gutter="6" justify="center">
+    <el-col :xs="12" :sm="8" :md="6" :lg="5" :xl="5">
+    <el-card shadow="hover" class="cardfive"> 
       <el-progress type="circle"
                    v-model="yhh"
-                   color="pink"
+                   color="white"
                    :format="format"
                    :percentage="yhh" />
-      悦海安 </el-card>
-    <el-card shadow="hover">
+      悦海安   </el-card>
+    </el-col>
+    <el-col :xs="12" :sm="8" :md="6" :lg="5" :xl="5">
+    <el-card shadow="hover" class="cardsix">
       <el-progress type="circle"
                    v-model="rb"
-                   color="yellow"
+                   color="white"
                    :format="format"
                    :percentage="rb" />
       海安日报 </el-card>
+    </el-col>
+  </el-row>
+  <br>
+  <el-row justify="center">
     <el-button type="primary"
                @click="searchInfo">获取数据</el-button>
     <el-button type="primary"
                @click="enterView">立即上传</el-button>
-  </el-space>
-  
+  <!-- </el-space> -->
+  </el-row>
+ </div>
 </template>
 <script lang="ts">
 import checkApi from '@/common/checkApi.ts';
@@ -126,8 +154,37 @@ export default {
 };
 </script>
 <style scoped>
-.box-card {
-    width: 680px;
+/* .el-card {
+    height: 160px;
+} */
+.cardone{
+  color: aliceblue;
+  font-size: 17px;
+  background-color:rgb(94, 144, 244);
 }
-
+.cardtwo{
+  color: aliceblue;
+  font-size: 17px;
+  background-color:rgb(243, 204, 131);
+}
+.cardthree{
+  color: aliceblue;
+  font-size: 17px;
+  background-color:rgb(237, 93, 93);
+}
+.cardfour{
+  color: aliceblue;
+  font-size: 17px;
+  background-color:rgb(79, 203, 91);
+}
+.cardfive{
+  color: aliceblue;
+  font-size: 17px;
+  background-color:rgb(239, 147, 105);
+}
+.cardsix{
+  color: aliceblue;
+  font-size: 17px;
+  background-color:rgb(239, 134, 188);
+}
 </style>
